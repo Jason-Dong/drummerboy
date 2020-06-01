@@ -1,4 +1,5 @@
 #include <Arduino.h>
+#include "Plotter.h"
 
 //Potentiometer Pin
 const int potPin = A9;
@@ -18,9 +19,13 @@ int ledB2Val = 0;
 int ledB3Val = 0;
 int ledB4Val = 0;
 
+Plotter p;
 
 void setup() {
   Serial.begin(9600);
+
+  p.Begin();
+  p.AddTimeGraph( "___", 1500, "Pot", potVal);
 }
 
 void loop() {
@@ -53,17 +58,18 @@ void loop() {
   analogWrite(ledB3Pin, ledB3Val);
   analogWrite(ledB4Pin, ledB4Val);
 
-  Serial.print(ledB1Val);
-  Serial.print("  ");
-  Serial.print(ledB2Val);
-  Serial.print("  ");
-  Serial.print(ledB3Val);
-  Serial.print("  ");
-  Serial.print(ledB4Val);
-  Serial.print("  ");
-  Serial.print("|");
-  Serial.print("  ");
-  Serial.println(potVal);
+  // Serial.print(ledB1Val);
+  // Serial.print("  ");
+  // Serial.print(ledB2Val);
+  // Serial.print("  ");
+  // Serial.print(ledB3Val);
+  // Serial.print("  ");
+  // Serial.print(ledB4Val);
+  // Serial.print("  ");
+  // Serial.print("|");
+  // Serial.print("  ");
+  // Serial.println(potVal);
 
+  p.Plot();
   delay(2);
 }
