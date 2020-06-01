@@ -1,4 +1,7 @@
 #include <Arduino.h>
+#include <elapsedMillis.h>
+
+elapsedMillis timeElapsed;
 
 //Potentiometer Pin
 const int potPin = A9;
@@ -53,17 +56,15 @@ void loop() {
   analogWrite(ledB3Pin, ledB3Val);
   analogWrite(ledB4Pin, ledB4Val);
 
-  Serial.print(ledB1Val);
-  Serial.print("  ");
-  Serial.print(ledB2Val);
-  Serial.print("  ");
-  Serial.print(ledB3Val);
-  Serial.print("  ");
-  Serial.print(ledB4Val);
-  Serial.print("  ");
-  Serial.print("|");
-  Serial.print("  ");
+  Serial.println("----------------");
+  Serial.println(ledB1Val);
+  Serial.println(ledB2Val);
+  Serial.println(ledB3Val);
+  Serial.println(ledB4Val);
+  Serial.println("|");
   Serial.println(potVal);
+  Serial.println("----------------");
 
-  delay(2);
+
+  delay(5);
 }
