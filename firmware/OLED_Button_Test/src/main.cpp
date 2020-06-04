@@ -100,7 +100,6 @@ void setup()   {
   debouncer3.attach(BUTTON3,INPUT_PULLUP);
   debouncer3.interval(25);
 
-
   // by default, we'll generate the high voltage from the 3.3v line internally! (neat!)
   display.begin(SH1106_SWITCHCAPVCC);
   // init done
@@ -114,7 +113,7 @@ void setup()   {
   // Clear the buffer.
   display.clearDisplay();
 
-  /*
+
 
   // draw a single pixel
   display.drawPixel(10, 10, WHITE);
@@ -124,6 +123,10 @@ void setup()   {
   display.display();
   delay(2000);
   display.clearDisplay();
+
+
+  /*
+
 
   // draw many lines
   testdrawline();
@@ -214,21 +217,36 @@ void loop() {
   debouncer2.update();
   debouncer3.update();
 
+  display.setTextSize(2);
+  display.setTextColor(WHITE);
+
   if ( debouncer1.fell() ) {  // Call code if button transitions from HIGH to LOW
     testdrawtriangle();
-    delay(2000);
+
+    // display.print("Hi ");
+    // display.display();
+
     display.clearDisplay();
   }
 
   if ( debouncer2.fell() ) {  // Call code if button transitions from HIGH to LOW
     testdrawroundrect();
-    delay(2000);
+
+    // display.print("X");
+    // display.display();
+
     display.clearDisplay();
   }
 
   if ( debouncer3.fell() ) {  // Call code if button transitions from HIGH to LOW
     testdrawcircle();
-    delay(2000);
+
+    // display.print("!");
+    // display.display();
+    // delay(3000);
+    // display.clearDisplay();
+    // testdrawbitmap(logo16_glcd_bmp, LOGO16_GLCD_HEIGHT, LOGO16_GLCD_WIDTH);
+
     display.clearDisplay();
   }
 }
