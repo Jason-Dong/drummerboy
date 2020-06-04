@@ -223,7 +223,7 @@ void loop() {
   if ( debouncer1.fell() ) {  // Call code if button transitions from HIGH to LOW
     testdrawtriangle();
 
-    // display.print("Hi ");
+    // display.print("Hello ");
     // display.display();
 
     display.clearDisplay();
@@ -232,7 +232,7 @@ void loop() {
   if ( debouncer2.fell() ) {  // Call code if button transitions from HIGH to LOW
     testdrawroundrect();
 
-    // display.print("X");
+    // display.print("Paul");
     // display.display();
 
     display.clearDisplay();
@@ -241,7 +241,7 @@ void loop() {
   if ( debouncer3.fell() ) {  // Call code if button transitions from HIGH to LOW
     testdrawcircle();
 
-    // display.print("!");
+    // display.print(".");
     // display.display();
     // delay(3000);
     // display.clearDisplay();
