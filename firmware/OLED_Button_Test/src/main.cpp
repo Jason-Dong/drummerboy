@@ -16,6 +16,15 @@ All text above, and the splash screen must be included in any redistribution
 #include <Wire.h>
 #include <Adafruit_GFX.h>
 #include <Adafruit_SH1106.h>
+#include <Bounce2.h>
+
+// Button definitions
+#define BUTTON1  14
+#define BUTTON2  15
+#define BUTTON3  16
+Bounce debouncer1 = Bounce();
+Bounce debouncer2 = Bounce();
+Bounce debouncer3 = Bounce();
 
 // If using software SPI (the default case):
 #define OLED_MOSI  11
@@ -84,6 +93,14 @@ void testdrawbitmap(const uint8_t *bitmap, uint8_t w, uint8_t h);
 void setup()   {
   Serial.begin(9600);
 
+  debouncer1.attach(BUTTON1,INPUT_PULLUP);
+  debouncer1.interval(25);
+  debouncer2.attach(BUTTON2,INPUT_PULLUP);
+  debouncer2.interval(25);
+  debouncer3.attach(BUTTON3,INPUT_PULLUP);
+  debouncer3.interval(25);
+
+
   // by default, we'll generate the high voltage from the 3.3v line internally! (neat!)
   display.begin(SH1106_SWITCHCAPVCC);
   // init done
@@ -96,6 +113,8 @@ void setup()   {
 
   // Clear the buffer.
   display.clearDisplay();
+
+  /*
 
   // draw a single pixel
   display.drawPixel(10, 10, WHITE);
@@ -158,11 +177,6 @@ void setup()   {
   delay(2000);
   display.clearDisplay();
 
-  // draw scrolling text
-  /*testscrolltext();
-  delay(2000);
-  display.clearDisplay();*/
-
   // text display tests
   display.setTextSize(1);
   display.setTextColor(WHITE);
@@ -189,11 +203,34 @@ void setup()   {
 
   // draw a bitmap icon and 'animate' movement
   testdrawbitmap(logo16_glcd_bmp, LOGO16_GLCD_HEIGHT, LOGO16_GLCD_WIDTH);
+
+
+  */
 }
 
 
 void loop() {
+  debouncer1.update();
+  debouncer2.update();
+  debouncer3.update();
 
+  if ( debouncer1.fell() ) {  // Call code if button transitions from HIGH to LOW
+    testdrawtriangle();
+    delay(2000);
+    display.clearDisplay();
+  }
+
+  if ( debouncer2.fell() ) {  // Call code if button transitions from HIGH to LOW
+    testdrawroundrect();
+    delay(2000);
+    display.clearDisplay();
+  }
+
+  if ( debouncer3.fell() ) {  // Call code if button transitions from HIGH to LOW
+    testdrawcircle();
+    delay(2000);
+    display.clearDisplay();
+  }
 }
 
 
