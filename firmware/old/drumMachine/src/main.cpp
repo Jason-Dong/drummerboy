@@ -51,7 +51,7 @@ Encoder ENC_R = Encoder(SW_R, ENC_R1, ENC_R2);
 #define OLED_DC     6
 #define OLED_CS    10
 #define OLED_RESET  7
-Adafruit_SH1106 display(OLED_MOSI, OLED_CLK, OLED_DC, OLED_RESET, OLED_CS);
+// Adafruit_SH1106 display(OLED_MOSI, OLED_CLK, OLED_DC, OLED_RESET, OLED_CS);
 
 #define NUMFLAKES 10
 #define XPOS 0
@@ -79,7 +79,7 @@ static const unsigned char PROGMEM logo16_glcd_bmp[] =
   B00000000, B00110000 };
 
 #if (SH1106_LCDHEIGHT != 64)
-#error("Height incorrect, please fix Adafruit_SH1106.h!");
+// #error("Height incorrect, please fix Adafruit_SH1106.h!");
 #endif
 
 
@@ -203,10 +203,10 @@ void setup() {
   Serial.begin(115200);
 
   // by default, we'll generate the high voltage from the 3.3v line internally! (neat!)
-  display.begin(SH1106_SWITCHCAPVCC);
-  display.display();
+  // display.begin(SH1106_SWITCHCAPVCC);
+  // display.display();
   delay(700);
-  display.clearDisplay();
+  // display.clearDisplay();
 
   //AUDIO
   delay(200);
@@ -256,7 +256,7 @@ void setup() {
 
 unsigned long last_time = millis();
 void loop() {
-
+  /*
   // RESET
   display.clearDisplay();
   display.setCursor(0, 0);
@@ -297,6 +297,7 @@ void loop() {
     display.clearDisplay();
   }
 
+*/
 
   //AUDIO
   unsigned char c,opcode,chan;
