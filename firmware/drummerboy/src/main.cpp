@@ -140,6 +140,7 @@ void openhh() {
 
 void setup() {
   Serial.begin(57600);
+  println("test");
 
   AudioMemory(100);
 
